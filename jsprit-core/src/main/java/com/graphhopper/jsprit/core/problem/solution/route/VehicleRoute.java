@@ -17,6 +17,7 @@
  */
 package com.graphhopper.jsprit.core.problem.solution.route;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.graphhopper.jsprit.core.problem.AbstractActivity;
 import com.graphhopper.jsprit.core.problem.JobActivityFactory;
 import com.graphhopper.jsprit.core.problem.Location;
@@ -120,9 +121,9 @@ public class VehicleRoute {
         private final Set<Shipment> openShipments = new HashSet<Shipment>();
 
         private JobActivityFactory jobActivityFactory = new JobActivityFactory() {
-            
+
             private final TourShipmentActivityFactory shipmentActivityFactory = new DefaultShipmentActivityFactory();
-            
+
             private final  TourActivityFactory serviceActivityFactory = new DefaultTourActivityFactory();
 
             @Override
@@ -183,7 +184,7 @@ public class VehicleRoute {
          * @return this builder
          * @throws IllegalArgumentException if service is null
          */
-        public Builder addService(Service service) {
+        public Builder  addService(Service service) {
             return addService(service,service.getTimeWindow());
         }
 
@@ -375,6 +376,7 @@ public class VehicleRoute {
      *
      * @return {@link TourActivities}
      */
+    @JsonIgnore
     public TourActivities getTourActivities() {
         return tourActivities;
     }

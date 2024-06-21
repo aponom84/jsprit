@@ -17,6 +17,9 @@
  */
 package com.graphhopper.jsprit.core.problem;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Arrays;
 
 /**
@@ -185,7 +188,7 @@ public class Capacity {
 
 
     }
-
+    @JsonProperty
     private int[] dimensions;
 
     /**
@@ -209,6 +212,7 @@ public class Capacity {
      *
      * @return noDimensions
      */
+    @JsonIgnore
     public int getNuOfDimensions() {
         return dimensions.length;
     }
